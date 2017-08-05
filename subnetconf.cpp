@@ -4,3 +4,7 @@ SubNetConf::SubNetConf()
 {
 
 }
+
+SubNetConf::~SubNetConf() {
+
+}

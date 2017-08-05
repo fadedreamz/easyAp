@@ -29,14 +29,18 @@ SOURCES += \
     interfacemanager.cpp \
     dhcpmanagement.cpp \
     subnetconf.cpp \
-    iscdhcpsubnetconf.cpp
+    iscdhcpsubnetconf.cpp \
+    iscdhcpparseengine.cpp \
+    idhcpparseengine.cpp
 
 HEADERS += \
         mainwindow.h \
     interfacemanager.h \
     dhcpmanagement.h \
     subnetconf.h \
-    iscdhcpsubnetconf.h
+    iscdhcpsubnetconf.h \
+    iscdhcpparseengine.h \
+    idhcpparseengine.h
 
 FORMS += \
         mainwindow.ui
