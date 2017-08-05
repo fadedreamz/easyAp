@@ -25,8 +25,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
     ui->tabWidget->resize(ui->centralWidget->width() - 20, ui->centralWidget->height() - 20);
     ui->tabWidget->setGeometry(10, 10, ui->centralWidget->width() - 20, ui->centralWidget->height() - 20);
-
-    ui->tab->
 }
 
 MainWindow::~MainWindow()
