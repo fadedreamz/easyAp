@@ -26,11 +26,23 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    interfacemanager.cpp
+    interfacemanager.cpp \
+    dhcpmanagement.cpp \
+    subnetconf.cpp \
+    iscdhcpsubnetconf.cpp \
+    iscdhcpparseengine.cpp \
+    idhcpparseengine.cpp \
+    logger.cpp
 
 HEADERS += \
         mainwindow.h \
-    interfacemanager.h
+    interfacemanager.h \
+    dhcpmanagement.h \
+    subnetconf.h \
+    iscdhcpsubnetconf.h \
+    iscdhcpparseengine.h \
+    idhcpparseengine.h \
+    logger.h
 
 FORMS += \
         mainwindow.ui
