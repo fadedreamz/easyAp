@@ -2,11 +2,16 @@
 #define ISCDHCPSUBNETCONF_H
 
 #include "subnetconf.h"
+#include <string>
 
-class IscDhcpSubNetConf : public SubNetConf
+class IscDHCPSubNetConf : public SubNetConf
 {
 public:
-    IscDhcpSubNetConf();
+    IscDHCPSubNetConf();
+    virtual ~IscDHCPSubNetConf();
+    virtual std::string generateConfig();
+
+    void setServingIpRange(std::string startIp, std::string endIp);
 };
 
 #endif // ISCDHCPSUBNETCONF_H

@@ -16,6 +16,8 @@ protected:
     std::vector<std::string> dns;
     std::string defaultLease;
     std::string maxLease;
+
+    bool isIpAddr(std::string debugName, std::string & ip);
 public:
     SubNetConf();
     virtual ~SubNetConf();
@@ -24,6 +26,10 @@ public:
     void setNetwork(std::string network);
     std::string getNetmask();
     void setNetmask(std::string netmask);
+    std::string getStartIp();
+    void setStartIp(std::string startIP);
+    std::string getEndIp();
+    void setEndIp(std::string endIp);
 
     static std::shared_ptr<SubNetConf> parseSubNetConfig(std::string config);
 

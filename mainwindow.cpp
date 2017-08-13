@@ -6,6 +6,8 @@
 
 using namespace std;
 
+MainWindow * MainWindow::thisInstance;
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -25,6 +27,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     ui->tabWidget->resize(ui->centralWidget->width() - 20, ui->centralWidget->height() - 20);
     ui->tabWidget->setGeometry(10, 10, ui->centralWidget->width() - 20, ui->centralWidget->height() - 20);
+
+    thisInstance = this;
 }
 
 MainWindow::~MainWindow()
@@ -51,4 +55,9 @@ std::shared_ptr<QStringList> MainWindow::getAllInterfaces() {
         list->append(QString((*it).c_str()));
     }
     return list;
+}
+
+
+QTextEdit * MainWindow::getLogWindow() {
+    return thisInstance->ui->logWindow;
 }

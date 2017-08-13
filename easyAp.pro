@@ -31,7 +31,8 @@ SOURCES += \
     subnetconf.cpp \
     iscdhcpsubnetconf.cpp \
     iscdhcpparseengine.cpp \
-    idhcpparseengine.cpp
+    idhcpparseengine.cpp \
+    logger.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -40,7 +41,8 @@ HEADERS += \
     subnetconf.h \
     iscdhcpsubnetconf.h \
     iscdhcpparseengine.h \
-    idhcpparseengine.h
+    idhcpparseengine.h \
+    logger.h
 
 FORMS += \
         mainwindow.ui

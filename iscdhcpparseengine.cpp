@@ -1,4 +1,5 @@
 #include "iscdhcpparseengine.h"
+#include "iscdhcpsubnetconf.h"
 #include "QDebug"
 #include <QString>
 #include <algorithm>
@@ -27,6 +28,8 @@ shared_ptr<SubNetConf> IscDHCPParseEngine::parseSubNetConf(std::string &conf)
     string line;
     istringstream input;
     input.str(conf);
+    // TODO:: excessive validation is not performed
+    // need to verify it properly matches with the isc-dhcp-server construct
     while(getline(input, line)) {
         for(auto it = line.begin(); it != line.end(); it++) {
             if (!contains(whitespaces, *it)) {
@@ -47,9 +50,42 @@ shared_ptr<SubNetConf> IscDHCPParseEngine::parseSubNetConf(std::string &conf)
         }
     }
 
+    shared_ptr<IscDHCPSubNetConf> config = shared_ptr<IscDHCPSubNetConf>(new IscDHCPSubNetConf());
+
+    bool isValid = true;
+
     for(auto it = items.begin(); it != items.end(); it++) {
         qDebug() << QString((*it).c_str());
+        if ((*it) == "subnet") {
+            if (it + 1 != items.end()) {
+                config->setNetwork(*(it + 1));
+                it++;
+            } else {
+                isValid = false;
+            }
+        } else if ((*it) == "netmask") {
+            if (it + 1 != items.end()) {
+                config->setNetmask(*(it + 1));
+                it++;
+            } else {
+                isValid = false;
+            }
+        } else if ((*it) == "range") {
+            if (it + 1 != items.end() && it + 2 != items.end()) {
+                config->setServingIpRange(*(it + 1), *(it + 2));
+                it = it + 2;
+            } else {
+                isValid = false;
+            }
+        }
     }
 
-    return shared_ptr<SubNetConf>(nullptr);
+    if (!isValid)
+        return shared_ptr<SubNetConf>(nullptr);
+    return dynamic_pointer_cast<SubNetConf>(config);
+}
+
+
+std::string IscDHCPParseEngine::getDriverName() {
+    return string("isc-dhcp-server");
 }

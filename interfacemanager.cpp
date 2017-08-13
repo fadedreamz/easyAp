@@ -32,7 +32,6 @@ std::shared_ptr<std::vector<std::string>> InterfaceManager::getAllInterfaces() {
                 newEntry = false;
                 break;
             }
-            qDebug() << "IF \"" << (*it).c_str() << "\", \"" << ifa->ifa_name << "\"";
         }
         if (newEntry && string(ifa->ifa_name) != string("lo"))
             interfaceList->push_back(string(ifa->ifa_name));
